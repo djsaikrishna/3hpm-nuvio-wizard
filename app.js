@@ -1,213 +1,54 @@
-const instanceNotes = {
-  'https://cometfortheweebs.midnightignite.me': 'Default uses the Midnightignite instance you tested successfully in Nuvio.',
-  'https://comet.feels.legal': 'Official Comet instance. Use this if it works better for your region or device.',
-  'https://cometa.stremx.net': 'Community instance. Test in Nuvio before sharing as recommended.',
-  'https://comet.stremio.ru': 'Community instance. Test in Nuvio before sharing as recommended.',
-  'https://comet.forthewizards.uk': 'Community instance. Test in Nuvio before sharing as recommended.',
+const instanceNotes={
+  'https://cometfortheweebs.midnightignite.me':'Default uses the Midnightignite instance you tested successfully in Nuvio.',
+  'https://comet.feels.legal':'Official Comet instance. Use this if it works better for your region or device.',
+  'https://cometa.stremx.net':'Community instance. Test in Nuvio before sharing as recommended.',
+  'https://comet.stremio.ru':'Community instance. Test in Nuvio before sharing as recommended.',
+  'https://comet.forthewizards.uk':'Community instance. Test in Nuvio before sharing as recommended.'
 };
 
-const resolutionKeys = ['r2160p', 'r1440p', 'r1080p', 'r720p', 'r576p', 'r480p', 'r360p', 'r240p', 'unknown'];
+const resolutionKeys=['r2160p','r1440p','r1080p','r720p','r576p','r480p','r360p','r240p','unknown'];
 
-const presets = {
-  beginner: {
-    description: 'A clean starter setup. Cached results only, trash releases removed, no torrent fallback, and account torrent scraping enabled. Best for people who just want it to work.',
-    maxResultsPerResolution: 5,
-    maxSize: 0,
-    cachedOnly: true,
-    removeTrash: true,
-    enableTorrent: false,
-    deduplicateStreams: true,
-    scrapeDebridAccountTorrents: true,
-    resolutions: ['r2160p', 'r1440p', 'r1080p', 'r720p'],
-  },
-  quality: {
-    description: 'Prioritizes higher quality cached results while keeping junk filtered out. 4K, 1440p, and 1080p only, no size cap, dedupe enabled, and no direct torrent fallback.',
-    maxResultsPerResolution: 10,
-    maxSize: 0,
-    cachedOnly: true,
-    removeTrash: true,
-    enableTorrent: false,
-    deduplicateStreams: true,
-    scrapeDebridAccountTorrents: true,
-    resolutions: ['r2160p', 'r1440p', 'r1080p'],
-  },
-  lowBandwidth: {
-    description: 'Keeps results lighter. Cached only, trash removed, dedupe enabled, 1080p and 720p only, and a 12 GB size cap to avoid giant remux-sized surprises.',
-    maxResultsPerResolution: 5,
-    maxSize: 12,
-    cachedOnly: true,
-    removeTrash: true,
-    enableTorrent: false,
-    deduplicateStreams: true,
-    scrapeDebridAccountTorrents: true,
-    resolutions: ['r1080p', 'r720p'],
-  },
-  maximum: {
-    description: 'More results without opening the floodgates. Cached only, trash removed, dedupe enabled, 10 results per resolution, all resolutions enabled, and no size cap.',
-    maxResultsPerResolution: 10,
-    maxSize: 0,
-    cachedOnly: true,
-    removeTrash: true,
-    enableTorrent: false,
-    deduplicateStreams: true,
-    scrapeDebridAccountTorrents: true,
-    resolutions: resolutionKeys,
-  },
+const presets={
+  beginner:{description:'A clean starter setup. Cached results only, trash releases removed, no fallback links, and account library scraping enabled. Best for people who just want it to work.',maxResultsPerResolution:5,maxSize:0,cachedOnly:true,removeTrash:true,enableTorrent:false,deduplicateStreams:true,scrapeDebridAccountTorrents:true,resolutions:['r2160p','r1440p','r1080p','r720p']},
+  quality:{description:'Prioritizes higher quality cached results while keeping junk filtered out. 4K, 1440p, and 1080p only, no size cap, dedupe enabled.',maxResultsPerResolution:10,maxSize:0,cachedOnly:true,removeTrash:true,enableTorrent:false,deduplicateStreams:true,scrapeDebridAccountTorrents:true,resolutions:['r2160p','r1440p','r1080p']},
+  lowBandwidth:{description:'Keeps results lighter. Cached only, trash removed, dedupe enabled, 1080p and 720p only, and a 12 GB size cap.',maxResultsPerResolution:5,maxSize:12,cachedOnly:true,removeTrash:true,enableTorrent:false,deduplicateStreams:true,scrapeDebridAccountTorrents:true,resolutions:['r1080p','r720p']},
+  maximum:{description:'More results without opening the floodgates. Cached only, trash removed, dedupe enabled, 10 results per resolution, all resolutions enabled, and no size cap.',maxResultsPerResolution:10,maxSize:0,cachedOnly:true,removeTrash:true,enableTorrent:false,deduplicateStreams:true,scrapeDebridAccountTorrents:true,resolutions:resolutionKeys}
 };
 
-function base64EncodeUnicode(value) {
-  const bytes = new TextEncoder().encode(value);
-  let binary = '';
-  bytes.forEach((byte) => {
-    binary += String.fromCharCode(byte);
-  });
-  return btoa(binary);
+function injectLanguageFilter(){
+  if(document.getElementById('languageFilter'))return;
+  const presetField=document.getElementById('preset')?.closest('.field');
+  if(!presetField)return;
+  const field=document.createElement('div');
+  field.className='field';
+  field.innerHTML='<label for="languageFilter">Language preference</label><select id="languageFilter" name="languageFilter"><option value="any" selected>Any language · recommended</option><option value="englishPreferred">English preferred</option><option value="englishOnly">English only · fewer results</option></select><small>Strict language filters may reduce results if release metadata is missing.</small>';
+  presetField.insertAdjacentElement('afterend',field);
 }
 
-function getSelectedInstance() {
-  return document.getElementById('instance').value.replace(/\/$/, '');
-}
+function base64EncodeUnicode(value){const bytes=new TextEncoder().encode(value);let binary='';bytes.forEach(byte=>{binary+=String.fromCharCode(byte)});return btoa(binary)}
+function getSelectedInstance(){return document.getElementById('instance').value.replace(/\/$/,'')}
+function getSelectedResolutions(){const checked=[...document.querySelectorAll('.resolutionOption:checked')].map(input=>input.value);return checked.length?checked:resolutionKeys}
+function setSelectedResolutions(selectedKeys){const selected=new Set(selectedKeys);document.querySelectorAll('.resolutionOption').forEach(input=>{input.checked=selected.has(input.value)})}
+function buildResolutionsConfig(){const selected=new Set(getSelectedResolutions());return resolutionKeys.reduce((config,key)=>{config[key]=selected.has(key);return config},{})}
+function buildLanguageConfig(){const value=document.getElementById('languageFilter')?.value||'any';if(value==='englishPreferred'){return{required:[],allowed:[],exclude:[],preferred:['English']}}if(value==='englishOnly'){return{required:[],allowed:['English'],exclude:[],preferred:['English']}}return{required:[],allowed:[],exclude:[],preferred:[]}}
+function buildCometConfig(){return{maxResultsPerResolution:Number(document.getElementById('maxResults').value)||0,maxSize:Number(document.getElementById('maxSize').value)||0,cachedOnly:document.getElementById('cachedOnly').checked,sortCachedUncachedTogether:false,removeTrash:document.getElementById('removeTrash').checked,resultFormat:['all'],debridServices:[],enableTorrent:document.getElementById('enableTorrent').checked,deduplicateStreams:document.getElementById('dedupe').checked,scrapeDebridAccountTorrents:document.getElementById('scrapeAccount').checked,debridStreamProxyPassword:'',languages:buildLanguageConfig(),resolutions:buildResolutionsConfig(),options:{remove_ranks_under:-10000000000,allow_english_in_languages:false,remove_unknown_languages:false}}}
+function buildManifestUrl(){const config=buildCometConfig();const encoded=base64EncodeUnicode(JSON.stringify(config));return`${getSelectedInstance()}/${encoded}/manifest.json`}
+function updateInstanceDescription(){const selectedInstance=getSelectedInstance();const description=instanceNotes[selectedInstance]||'Test this instance in Nuvio before sharing it as recommended.';document.getElementById('instanceDescription').textContent=description}
+function updateOutput(){updateInstanceDescription();const manifestUrl=buildManifestUrl();document.getElementById('manifestUrl').value=manifestUrl;document.getElementById('openManifest').href=manifestUrl;document.getElementById('qrCode').src=`https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(manifestUrl)}`}
+function applyPreset(name){const preset=presets[name]||presets.beginner;document.getElementById('maxResults').value=preset.maxResultsPerResolution;document.getElementById('maxSize').value=preset.maxSize;document.getElementById('cachedOnly').checked=preset.cachedOnly;document.getElementById('removeTrash').checked=preset.removeTrash;document.getElementById('enableTorrent').checked=preset.enableTorrent;document.getElementById('dedupe').checked=preset.deduplicateStreams;document.getElementById('scrapeAccount').checked=preset.scrapeDebridAccountTorrents;setSelectedResolutions(preset.resolutions);document.getElementById('presetDescription').textContent=preset.description;updateOutput()}
+function showStep(stepId,shouldScroll=true){document.querySelectorAll('.stepCard').forEach(step=>{step.classList.toggle('active',step.id===stepId);step.classList.toggle('collapsed',step.id!==stepId)});if(shouldScroll){document.getElementById(stepId).scrollIntoView({behavior:'smooth',block:'start'})}}
+async function copyValue(selector,button){const element=document.querySelector(selector);await navigator.clipboard.writeText(element.value);const original=button.textContent;button.textContent='Copied';setTimeout(()=>{button.textContent=original},1200)}
 
-function getSelectedResolutions() {
-  const checked = [...document.querySelectorAll('.resolutionOption:checked')].map((input) => input.value);
-  return checked.length ? checked : resolutionKeys;
-}
-
-function setSelectedResolutions(selectedKeys) {
-  const selected = new Set(selectedKeys);
-  document.querySelectorAll('.resolutionOption').forEach((input) => {
-    input.checked = selected.has(input.value);
-  });
-}
-
-function buildResolutionsConfig() {
-  const selected = new Set(getSelectedResolutions());
-  return resolutionKeys.reduce((config, key) => {
-    config[key] = selected.has(key);
-    return config;
-  }, {});
-}
-
-function buildCometConfig() {
-  return {
-    maxResultsPerResolution: Number(document.getElementById('maxResults').value) || 0,
-    maxSize: Number(document.getElementById('maxSize').value) || 0,
-    cachedOnly: document.getElementById('cachedOnly').checked,
-    sortCachedUncachedTogether: false,
-    removeTrash: document.getElementById('removeTrash').checked,
-    resultFormat: ['all'],
-    debridServices: [],
-    enableTorrent: document.getElementById('enableTorrent').checked,
-    deduplicateStreams: document.getElementById('dedupe').checked,
-    scrapeDebridAccountTorrents: document.getElementById('scrapeAccount').checked,
-    debridStreamProxyPassword: '',
-    languages: {
-      required: [],
-      allowed: [],
-      exclude: [],
-      preferred: [],
-    },
-    resolutions: buildResolutionsConfig(),
-    options: {
-      remove_ranks_under: -10000000000,
-      allow_english_in_languages: false,
-      remove_unknown_languages: false,
-    },
-  };
-}
-
-function buildManifestUrl() {
-  const config = buildCometConfig();
-  const encoded = base64EncodeUnicode(JSON.stringify(config));
-  return `${getSelectedInstance()}/${encoded}/manifest.json`;
-}
-
-function updateInstanceDescription() {
-  const selectedInstance = getSelectedInstance();
-  const description = instanceNotes[selectedInstance] || 'Test this instance in Nuvio before sharing it as recommended.';
-  document.getElementById('instanceDescription').textContent = description;
-}
-
-function updateOutput() {
-  updateInstanceDescription();
-  const manifestUrl = buildManifestUrl();
-  const manifestField = document.getElementById('manifestUrl');
-  const openManifest = document.getElementById('openManifest');
-  const qrCode = document.getElementById('qrCode');
-
-  manifestField.value = manifestUrl;
-  openManifest.href = manifestUrl;
-  qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(manifestUrl)}`;
-}
-
-function applyPreset(name) {
-  const preset = presets[name] || presets.beginner;
-  document.getElementById('maxResults').value = preset.maxResultsPerResolution;
-  document.getElementById('maxSize').value = preset.maxSize;
-  document.getElementById('cachedOnly').checked = preset.cachedOnly;
-  document.getElementById('removeTrash').checked = preset.removeTrash;
-  document.getElementById('enableTorrent').checked = preset.enableTorrent;
-  document.getElementById('dedupe').checked = preset.deduplicateStreams;
-  document.getElementById('scrapeAccount').checked = preset.scrapeDebridAccountTorrents;
-  setSelectedResolutions(preset.resolutions);
-  document.getElementById('presetDescription').textContent = preset.description;
-  updateOutput();
-}
-
-function showStep(stepId, shouldScroll = true) {
-  document.querySelectorAll('.stepCard').forEach((step) => {
-    step.classList.toggle('active', step.id === stepId);
-    step.classList.toggle('collapsed', step.id !== stepId);
-  });
-
-  if (shouldScroll) {
-    document.getElementById(stepId).scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-}
-
-async function copyValue(selector, button) {
-  const element = document.querySelector(selector);
-  await navigator.clipboard.writeText(element.value);
-  const original = button.textContent;
-  button.textContent = 'Copied';
-  setTimeout(() => {
-    button.textContent = original;
-  }, 1200);
-}
-
-document.getElementById('preset').addEventListener('change', (event) => {
-  applyPreset(event.target.value);
-});
-
-document.getElementById('instance').addEventListener('change', updateOutput);
-
-document.getElementById('wizardForm').addEventListener('input', updateOutput);
-
-document.querySelectorAll('.nextStep').forEach((button) => {
-  button.addEventListener('click', () => showStep(button.dataset.next));
-});
-
-document.querySelectorAll('.backStep').forEach((button) => {
-  button.addEventListener('click', () => showStep(button.dataset.prev));
-});
-
-document.getElementById('selectAllResolutions').addEventListener('click', () => {
-  setSelectedResolutions(resolutionKeys);
-  updateOutput();
-});
-
-document.getElementById('qualityResolutions').addEventListener('click', () => {
-  setSelectedResolutions(['r2160p', 'r1440p', 'r1080p']);
-  updateOutput();
-});
-
-document.getElementById('copyManifest').addEventListener('click', (event) => {
-  copyValue('#manifestUrl', event.currentTarget);
-});
-
-document.getElementById('copyName').addEventListener('click', (event) => {
-  copyValue('#renameSuggestion', event.currentTarget);
-});
-
+injectLanguageFilter();
+document.getElementById('preset').addEventListener('change',event=>applyPreset(event.target.value));
+document.getElementById('instance').addEventListener('change',updateOutput);
+document.getElementById('languageFilter').addEventListener('change',updateOutput);
+document.getElementById('wizardForm').addEventListener('input',updateOutput);
+document.querySelectorAll('.nextStep').forEach(button=>button.addEventListener('click',()=>showStep(button.dataset.next)));
+document.querySelectorAll('.backStep').forEach(button=>button.addEventListener('click',()=>showStep(button.dataset.prev)));
+document.getElementById('selectAllResolutions').addEventListener('click',()=>{setSelectedResolutions(resolutionKeys);updateOutput()});
+document.getElementById('qualityResolutions').addEventListener('click',()=>{setSelectedResolutions(['r2160p','r1440p','r1080p']);updateOutput()});
+document.getElementById('copyManifest').addEventListener('click',event=>copyValue('#manifestUrl',event.currentTarget));
+document.getElementById('copyName').addEventListener('click',event=>copyValue('#renameSuggestion',event.currentTarget));
 applyPreset('beginner');
-showStep('step1', false);
+showStep('step1',false);
