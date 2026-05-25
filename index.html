@@ -57,6 +57,26 @@
           <p class="presetDescription" id="presetDescription"></p>
         </div>
 
+        <fieldset class="checks resolutions">
+          <legend>Resolutions to scrape</legend>
+          <p class="helperText">Leave all checked for the broadest results, or uncheck lower qualities you do not want to see.</p>
+          <div class="resolutionGrid">
+            <label><input class="resolutionOption" type="checkbox" value="r2160p" checked /> 4K UHD, 2160p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r1440p" checked /> QHD, 1440p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r1080p" checked /> FHD, 1080p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r720p" checked /> HD, 720p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r576p" checked /> SD, 576p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r480p" checked /> SD, 480p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r360p" checked /> LD, 360p</label>
+            <label><input class="resolutionOption" type="checkbox" value="r240p" checked /> LD, 240p</label>
+            <label><input class="resolutionOption" type="checkbox" value="unknown" checked /> Unknown</label>
+          </div>
+          <div class="miniActions">
+            <button id="selectAllResolutions" type="button" class="smallBtn ghostBtn">Select all</button>
+            <button id="qualityResolutions" type="button" class="smallBtn ghostBtn">4K / 1440p / 1080p</button>
+          </div>
+        </fieldset>
+
         <div class="field two">
           <label for="maxResults">Max results per resolution</label>
           <input id="maxResults" name="maxResults" type="number" min="0" step="1" value="0" />
