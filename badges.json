@@ -164,8 +164,8 @@
       "isEnabled": true,
       "name": "IMAX Enhanced",
       "pattern": "(?i)\\bimax[\\s._-]?enhanced\\b",
-      "tagColor": "#FFFFFF",
-      "tagStyle": "filled",
+      "tagColor": "#0e0e0e",
+      "tagStyle": "filled and bordered",
       "textColor": "#0e0e0e",
       "type": "filter"
     },
