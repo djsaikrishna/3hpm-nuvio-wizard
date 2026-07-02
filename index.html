@@ -10,183 +10,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Fragment+Mono&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 <style>
-  .releaseBanner{position:sticky;top:0;z-index:50;overflow:hidden;background:#161616;color:#fbf8ef;border-bottom:3px solid #ff3d1f;font-family:"Fragment Mono",ui-monospace,Menlo,monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-  .releaseBannerTrack{display:inline-flex;gap:2rem;min-width:max-content;padding:.65rem 0;animation:releaseBannerScroll 34s linear infinite}
-  .releaseBannerTrack span{display:inline-block;padding-left:2rem}
-  .releaseBanner strong{color:#ff3d1f}
-  @keyframes releaseBannerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){.releaseBannerTrack{animation:none;white-space:normal;display:block;padding:.65rem 1rem}.releaseBannerTrack span{padding-left:0;display:block}}
+.releaseBanner{position:sticky;top:0;z-index:50;overflow:hidden;background:#161616;color:#fbf8ef;border-bottom:3px solid #ff3d1f;font-family:"Fragment Mono",ui-monospace,Menlo,monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
+.releaseBannerTrack{display:inline-flex;gap:2rem;min-width:max-content;padding:.65rem 0;animation:releaseBannerScroll 34s linear infinite}
+.releaseBannerTrack span{display:inline-block;padding-left:2rem}.releaseBanner strong{color:#ff3d1f}
+@keyframes releaseBannerScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.releaseBannerTrack{animation:none;white-space:normal;display:block;padding:.65rem 1rem}.releaseBannerTrack span{padding-left:0;display:block}}
+.manifestCard textarea,.manifestNameRow input{background:#fbf8ef!important;color:#161616!important;-webkit-text-fill-color:#161616!important;opacity:1!important}
 </style>
 </head>
 <body>
-<div class="releaseBanner" role="note" aria-label="Important Nuvio version notice">
-  <div class="releaseBannerTrack">
-    <span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span>
-    <span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span>
-  </div>
-</div>
-
-<header class="topbar">
-  <div class="brand" aria-label="3 Hole Punch Media">
-    <span class="punches" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="wordmark">3 Hole Punch Media</span>
-  </div>
-  <div class="fileMark" aria-hidden="true">
-    <span class="label">FILE</span>
-    <span class="num">№ 001 · NUVIO · V1</span>
-  </div>
-</header>
-
+<div class="releaseBanner" role="note" aria-label="Important Nuvio version notice"><div class="releaseBannerTrack"><span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span><span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span></div></div>
+<header class="topbar"><div class="brand" aria-label="3 Hole Punch Media"><span class="punches" aria-hidden="true"><i></i><i></i><i></i></span><span class="wordmark">3 Hole Punch Media</span></div><div class="fileMark" aria-hidden="true"><span class="label">FILE</span><span class="num">№ 001 · NUVIO · V1</span></div></header>
 <main class="shell">
-  <section class="hero">
-    <p class="eyebrow">Nuvio Connected Services · Multi-Addon Manifest Builder</p>
-    <h1 class="display">The <em>multi-addon</em> manifest<br/>wizard for Nuvio.</h1>
-    <p class="lede">Build one or more clean, keyless manifests for Comet, Torrentio, and StremThru Torz. Connect TorBox in Nuvio first, make sure <em>Resolve playable links</em> is enabled, then generate the addon URLs. <strong>No TorBox API key</strong> goes into this wizard.</p>
-    <aside class="notice" role="note">
-      <span class="stamp">Read me</span>
-      <p><strong>Nuvio Connected Services only.</strong> This tool builds scraper manifests. TorBox authentication stays inside Nuvio.</p>
-    </aside>
-  </section>
-
-  <nav class="progress" aria-label="Wizard progress">
-    <ol>
-      <li data-target="step1" class="is-active"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">01</span><span class="title">Nuvio&nbsp;setup</span></span></li>
-      <li data-target="step2"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">02</span><span class="title">Scraper&nbsp;setup</span></span></li>
-      <li data-target="step3"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">03</span><span class="title">Install</span></span></li>
-    </ol>
-  </nav>
-
-  <form id="wizardForm" class="wizardFlow">
-    <section class="stepCard active" id="step1">
-      <header class="stepHeader">
-        <span class="stepNumber" aria-hidden="true">01</span>
-        <div class="stepTitle"><p class="eyebrow">Nuvio setup</p><h2>Connect TorBox first.</h2></div>
-      </header>
-      <div class="stepBody">
-        <p class="stepIntro">Do this inside Nuvio <em>before</em> generating the manifests. This is the part people miss.</p>
-        <div class="setupChecklist">
-          <label><input type="checkbox" id="confirmTorbox" /><span>TorBox is connected in Nuvio under <b>Settings → Integrations → Connected Services → TorBox</b>.</span></label>
-          <label><input type="checkbox" id="confirmResolve" /><span><b>Resolve playable links</b> is toggled on in Connected Services.</span></label>
-          <label><input type="checkbox" id="confirmNoApi" /><span>I understand this wizard <b>does not need</b> my TorBox API key.</span></label>
-        </div>
-        <aside class="notice" role="note"><span class="stamp">Note</span><p>Nuvio labels Connected Services as experimental. Settings may change, move, or be removed in future Nuvio releases.</p></aside>
-        <div class="stepActions"><button type="button" class="btn primary nextStep" data-next="step2">Continue to scraper setup <span class="arrow" aria-hidden="true">→</span></button></div>
-      </div>
-    </section>
-
-    <section class="stepCard collapsed" id="step2">
-      <header class="stepHeader">
-        <span class="stepNumber" aria-hidden="true">02</span>
-        <div class="stepTitle"><p class="eyebrow">Scraper setup</p><h2>Choose your addons and settings.</h2></div>
-      </header>
-      <div class="stepBody">
-        <div class="fieldGroup">
-          <div class="field">
-            <label for="addon">Scraper addons</label>
-            <select id="addon" name="addon"><option value="comet" selected>Comet</option><option value="torrentio">Torrentio</option><option value="stremthru">StremThru Torz</option></select>
-            <small>Select one or more addons. The enhanced selector loads automatically.</small>
-          </div>
-          <div class="field">
-            <label for="instance">Comet instance</label>
-            <select id="instance" name="instance">
-              <option value="https://cometfortheweebs.midnightignite.me" selected>Midnightignite · tested</option>
-              <option value="https://comet.feels.legal">Comet feels.legal</option>
-              <option value="https://cometa.stremx.net">Cometa StremX</option>
-              <option value="https://comet.stremio.ru">Comet stremio.ru</option>
-            </select>
-            <small id="instanceDescription">Default uses the Midnightignite instance you tested successfully in Nuvio.</small>
-          </div>
-          <div class="field">
-            <label for="preset">Preset</label>
-            <select id="preset" name="preset">
-              <option value="beginner" selected>Beginner Safe</option>
-              <option value="quality">Best Quality</option>
-              <option value="lowBandwidth">Low Bandwidth</option>
-              <option value="maximum">Maximum Results</option>
-            </select>
-            <p class="presetDescription" id="presetDescription"></p>
-          </div>
-        </div>
-
-        <fieldset class="checks resolutions">
-          <legend>Resolutions to scrape</legend>
-          <p class="helperText">Leave all checked for the broadest results, or uncheck lower qualities you don't want to see.</p>
-          <div class="resolutionGrid">
-            <label><input class="resolutionOption" type="checkbox" value="r2160p" checked /><span>4K UHD<small>2160p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r1440p" checked /><span>QHD<small>1440p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r1080p" checked /><span>FHD<small>1080p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r720p" checked /><span>HD<small>720p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r576p" checked /><span>SD<small>576p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r480p" checked /><span>SD<small>480p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r360p" checked /><span>LD<small>360p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="r240p" checked /><span>LD<small>240p</small></span></label>
-            <label><input class="resolutionOption" type="checkbox" value="unknown" checked /><span>Unknown<small>—</small></span></label>
-          </div>
-          <div class="miniActions">
-            <button id="selectAllResolutions" type="button" class="smallBtn ghostBtn btn ghost small">Select all</button>
-            <button id="qualityResolutions" type="button" class="smallBtn ghostBtn btn ghost small">4K · 1440p · 1080p</button>
-          </div>
-        </fieldset>
-
-        <div class="settingsGrid">
-          <div class="field two"><label for="maxResults">Max results / resolution</label><input id="maxResults" name="maxResults" type="number" min="0" step="1" value="0" /><small>10 is a strong tested value. 0 means unlimited. This applies to Comet only.</small></div>
-          <div class="field two"><label for="maxSize">Max size <span class="unit">(GB)</span></label><input id="maxSize" name="maxSize" type="number" min="0" step="0.5" value="0" /><small>Use this for low-bandwidth setups. 0 means no size cap.</small></div>
-        </div>
-
-        <fieldset class="checks options">
-          <legend>Nuvio-safe options</legend>
-          <div class="optionsGrid">
-            <label><input id="cachedOnly" type="checkbox" checked /><span>Cached only</span></label>
-            <label><input id="removeTrash" type="checkbox" checked /><span>Remove trash releases</span></label>
-            <label><input id="dedupe" type="checkbox" checked /><span>Deduplicate streams</span></label>
-            <label><input id="scrapeAccount" type="checkbox" checked /><span>Scrape debrid account torrents</span></label>
-          </div>
-        </fieldset>
-
-        <details class="advanced"><summary><span class="summaryLabel">Advanced — torrent fallback</span><span class="chevron" aria-hidden="true"></span></summary><div class="advancedBody"><p>Leave this <em>off</em> for the normal Nuvio Connected Services setup. Turning it on may show direct torrent or magnet results depending on Comet and Nuvio behavior.</p><label class="standalone"><input id="enableTorrent" type="checkbox" /><span>Enable torrent fallback</span></label></div></details>
-
-        <aside class="notice" role="note"><span class="stamp">Nuvio filters</span><p>The wizard controls what Comet and Torrentio send to Nuvio. StremThru Torz uses its fixed tested manifest. Use Nuvio's Connected Services settings for final filtering and formatting.</p></aside>
-        <div class="stepActions">
-          <button type="button" class="btn ghost backStep" data-prev="step1"><span class="arrow back" aria-hidden="true">←</span> Back</button>
-          <button type="button" class="btn primary nextStep" data-next="step3">Generate manifests <span class="arrow" aria-hidden="true">→</span></button>
-        </div>
-      </div>
-    </section>
-
-    <section class="stepCard collapsed" id="step3">
-      <header class="stepHeader"><span class="stepNumber" aria-hidden="true">03</span><div class="stepTitle"><p class="eyebrow">Install</p><h2>Copy your manifest URLs.</h2></div></header>
-      <div class="stepBody output">
-        <div class="manifestBox"><div class="manifestHeader"><span class="ribbon">Manifests · Ready</span><span class="meta-mono"><span class="dot-led"></span> Selected addons · TorBox · Instant</span></div><div id="manifestList"></div></div>
-        <div class="installGrid">
-          <div class="qrWrap">
-            <p class="eyebrow">Scan to open Nuvio Addons</p>
-            <div class="qrFrame"><img id="qrCode" alt="QR code for Nuvio addons page" /><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div>
-            <small>Copy your manifest URLs first, then scan this to open Nuvio's addon page and paste them one at a time.</small>
-          </div>
-        </div>
-        <div class="finalSteps"><h3>Finish in Nuvio</h3><ol><li><span class="num">1</span><span>Add each generated manifest URL to Nuvio.</span></li><li><span class="num">2</span><span>Enable each new addon.</span></li><li><span class="num">3</span><span>Rename each addon to its suggested 3HPM name in the Nuvio web account.</span></li><li><span class="num">4</span><span>Optional — format your Connected Services feed in Nuvio's website editor or mobile editor. Start from the 3HPM CrispyDuck format at <a href="https://crispyduck.xyz/?load=4afgx3vf" target="_blank" rel="noopener">crispyduck.xyz/?load=4afgx3vf</a>, or create your own.</span></li></ol></div>
-        <div class="stepActions"><button type="button" class="btn ghost backStep" data-prev="step2"><span class="arrow back" aria-hidden="true">←</span> Back to settings</button></div>
-      </div>
-    </section>
-  </form>
-
-  <footer class="pageFooter"><p class="disclaimer">An independent 3HPM utility. Not affiliated with Nuvio, Comet, Torrentio, StremThru, or TorBox.</p><p class="signoff">Built with care by <span class="brand-mark">3 Hole Punch Media</span></p></footer>
+<section class="hero"><p class="eyebrow">Nuvio Connected Services · Multi-Addon Manifest Builder</p><h1 class="display">The <em>multi-addon</em> manifest<br/>wizard for Nuvio.</h1><p class="lede">Build one or more clean, keyless manifests for Comet, Torrentio, and StremThru Torz. Connect TorBox in Nuvio first, make sure <em>Resolve playable links</em> is enabled, then generate the addon URLs. <strong>No TorBox API key</strong> goes into this wizard.</p><aside class="notice" role="note"><span class="stamp">Read me</span><p><strong>Nuvio Connected Services only.</strong> This tool builds scraper manifests. TorBox authentication stays inside Nuvio.</p></aside></section>
+<nav class="progress" aria-label="Wizard progress"><ol><li data-target="step1" class="is-active"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">01</span><span class="title">Nuvio&nbsp;setup</span></span></li><li data-target="step2"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">02</span><span class="title">Scraper&nbsp;setup</span></span></li><li data-target="step3"><span class="dot"><i class="hole"></i></span><span class="meta"><span class="num">03</span><span class="title">Install</span></span></li></ol></nav>
+<form id="wizardForm" class="wizardFlow">
+<section class="stepCard active" id="step1"><header class="stepHeader"><span class="stepNumber" aria-hidden="true">01</span><div class="stepTitle"><p class="eyebrow">Nuvio setup</p><h2>Connect TorBox first.</h2></div></header><div class="stepBody"><p class="stepIntro">Do this inside Nuvio <em>before</em> generating the manifests. This is the part people miss.</p><div class="setupChecklist"><label><input type="checkbox" id="confirmTorbox" /><span>TorBox is connected in Nuvio under <b>Settings → Integrations → Connected Services → TorBox</b>.</span></label><label><input type="checkbox" id="confirmResolve" /><span><b>Resolve playable links</b> is toggled on in Connected Services.</span></label><label><input type="checkbox" id="confirmNoApi" /><span>I understand this wizard <b>does not need</b> my TorBox API key.</span></label></div><aside class="notice" role="note"><span class="stamp">Note</span><p>Nuvio labels Connected Services as experimental. Settings may change, move, or be removed in future Nuvio releases.</p></aside><div class="stepActions"><button type="button" class="btn primary nextStep" data-next="step2">Continue to scraper setup <span class="arrow" aria-hidden="true">→</span></button></div></div></section>
+<section class="stepCard collapsed" id="step2"><header class="stepHeader"><span class="stepNumber" aria-hidden="true">02</span><div class="stepTitle"><p class="eyebrow">Scraper setup</p><h2>Choose your addons and settings.</h2></div></header><div class="stepBody"><div class="fieldGroup"><div class="field"><label for="addon">Scraper addons</label><select id="addon" name="addon"><option value="comet" selected>Comet</option><option value="torrentio">Torrentio</option><option value="stremthru">StremThru Torz</option></select><small>Select one or more addons. The enhanced selector loads automatically.</small></div><div class="field"><label for="instance">Comet instance</label><select id="instance" name="instance"><option value="https://cometfortheweebs.midnightignite.me" selected>Midnightignite · tested</option><option value="https://comet.feels.legal">Comet feels.legal</option><option value="https://cometa.stremx.net">Cometa StremX</option><option value="https://comet.stremio.ru">Comet stremio.ru</option></select><small id="instanceDescription">Default uses the Midnightignite instance you tested successfully in Nuvio.</small></div><div class="field"><label for="preset">Preset</label><select id="preset" name="preset"><option value="beginner" selected>Beginner Safe</option><option value="quality">Best Quality</option><option value="lowBandwidth">Low Bandwidth</option><option value="maximum">Maximum Results</option></select><p class="presetDescription" id="presetDescription"></p></div></div>
+<fieldset class="checks resolutions"><legend>Resolutions to scrape</legend><p class="helperText">Leave all checked for the broadest results, or uncheck lower qualities you don't want to see.</p><div class="resolutionGrid"><label><input class="resolutionOption" type="checkbox" value="r2160p" checked /><span>4K UHD<small>2160p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r1440p" checked /><span>QHD<small>1440p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r1080p" checked /><span>FHD<small>1080p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r720p" checked /><span>HD<small>720p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r576p" checked /><span>SD<small>576p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r480p" checked /><span>SD<small>480p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r360p" checked /><span>LD<small>360p</small></span></label><label><input class="resolutionOption" type="checkbox" value="r240p" checked /><span>LD<small>240p</small></span></label><label><input class="resolutionOption" type="checkbox" value="unknown" checked /><span>Unknown<small>—</small></span></label></div><div class="miniActions"><button id="selectAllResolutions" type="button" class="smallBtn ghostBtn btn ghost small">Select all</button><button id="qualityResolutions" type="button" class="smallBtn ghostBtn btn ghost small">4K · 1440p · 1080p</button></div></fieldset>
+<div class="settingsGrid"><div class="field two"><label for="maxResults">Max results / resolution</label><input id="maxResults" name="maxResults" type="number" min="0" step="1" value="0" /><small>10 is a strong tested value. 0 means unlimited. This applies to Comet only.</small></div><div class="field two"><label for="maxSize">Max size <span class="unit">(GB)</span></label><input id="maxSize" name="maxSize" type="number" min="0" step="0.5" value="0" /><small>Use this for low-bandwidth setups. 0 means no size cap.</small></div></div>
+<fieldset class="checks options"><legend>Nuvio-safe options</legend><div class="optionsGrid"><label><input id="cachedOnly" type="checkbox" checked /><span>Cached only</span></label><label><input id="removeTrash" type="checkbox" checked /><span>Remove trash releases</span></label><label><input id="dedupe" type="checkbox" checked /><span>Deduplicate streams</span></label><label><input id="scrapeAccount" type="checkbox" checked /><span>Scrape debrid account torrents</span></label></div></fieldset>
+<details class="advanced"><summary><span class="summaryLabel">Advanced — torrent fallback</span><span class="chevron" aria-hidden="true"></span></summary><div class="advancedBody"><p>Leave this <em>off</em> for the normal Nuvio Connected Services setup. Turning it on may show direct torrent or magnet results depending on Comet and Nuvio behavior.</p><label class="standalone"><input id="enableTorrent" type="checkbox" /><span>Enable torrent fallback</span></label></div></details><aside class="notice" role="note"><span class="stamp">Nuvio filters</span><p>The wizard controls what Comet and Torrentio send to Nuvio. StremThru Torz uses its fixed tested manifest. Use Nuvio's Connected Services settings for final filtering and formatting.</p></aside><div class="stepActions"><button type="button" class="btn ghost backStep" data-prev="step1"><span class="arrow back" aria-hidden="true">←</span> Back</button><button type="button" class="btn primary nextStep" data-next="step3">Generate manifests <span class="arrow" aria-hidden="true">→</span></button></div></div></section>
+<section class="stepCard collapsed" id="step3"><header class="stepHeader"><span class="stepNumber" aria-hidden="true">03</span><div class="stepTitle"><p class="eyebrow">Install</p><h2>Copy your manifest URLs.</h2></div></header><div class="stepBody output"><div class="manifestBox"><div class="manifestHeader"><span class="ribbon">Manifests · Ready</span><span class="meta-mono"><span class="dot-led"></span> Selected addons · TorBox · Instant</span></div><div id="manifestList"></div></div><div class="installGrid"><div class="qrWrap"><p class="eyebrow">Scan to open Nuvio Addons</p><div class="qrFrame"><img id="qrCode" alt="QR code for Nuvio addons page" /><span class="corner tl" aria-hidden="true"></span><span class="corner tr" aria-hidden="true"></span><span class="corner bl" aria-hidden="true"></span><span class="corner br" aria-hidden="true"></span></div><small>Copy your manifest URLs first, then scan this to open Nuvio's addon page and paste them one at a time.</small></div></div><div class="finalSteps"><h3>Finish in Nuvio</h3><ol><li><span class="num">1</span><span>Add each generated manifest URL to Nuvio.</span></li><li><span class="num">2</span><span>Enable each new addon.</span></li><li><span class="num">3</span><span>Rename each addon to its suggested 3HPM name in the Nuvio web account.</span></li><li><span class="num">4</span><span>Optional — format your Connected Services feed in Nuvio's website editor or mobile editor. Start from the 3HPM CrispyDuck format at <a href="https://crispyduck.xyz/?load=4afgx3vf" target="_blank" rel="noopener">crispyduck.xyz/?load=4afgx3vf</a>, or create your own.</span></li></ol></div><div class="stepActions"><button type="button" class="btn ghost backStep" data-prev="step2"><span class="arrow back" aria-hidden="true">←</span> Back to settings</button></div></div></section>
+</form>
+<footer class="pageFooter"><p class="disclaimer">An independent 3HPM utility. Not affiliated with Nuvio, Comet, Torrentio, StremThru, or TorBox.</p><p class="signoff">Built with care by <span class="brand-mark">3 Hole Punch Media</span></p></footer>
 </main>
-
-<script src="app.js?v=20260701-multi-addon"></script>
-<script>
-(function () {
-  var steps = ['step1', 'step2', 'step3'];
-  var liEls = document.querySelectorAll('.progress li');
-  if (!liEls.length) return;
-  function update() {
-    var activeIndex = 0;
-    steps.forEach(function (id, i) { var el = document.getElementById(id); if (el && el.classList.contains('active')) activeIndex = i; });
-    liEls.forEach(function (li, i) { li.classList.remove('is-active', 'is-done'); if (i < activeIndex) li.classList.add('is-done'); else if (i === activeIndex) li.classList.add('is-active'); });
-  }
-  update();
-  steps.forEach(function (id) { var el = document.getElementById(id); if (el) new MutationObserver(update).observe(el, { attributes: true, attributeFilter: ['class'] }); });
-})();
-</script>
+<script src="app.js?v=20260701-multi-addon-contrast"></script>
+<script>(function(){var steps=['step1','step2','step3'];var liEls=document.querySelectorAll('.progress li');if(!liEls.length)return;function update(){var activeIndex=0;steps.forEach(function(id,i){var el=document.getElementById(id);if(el&&el.classList.contains('active'))activeIndex=i});liEls.forEach(function(li,i){li.classList.remove('is-active','is-done');if(i<activeIndex)li.classList.add('is-done');else if(i===activeIndex)li.classList.add('is-active')})}update();steps.forEach(function(id){var el=document.getElementById(id);if(el)new MutationObserver(update).observe(el,{attributes:true,attributeFilter:['class']})})})();</script>
 </body>
 </html>
