@@ -18,85 +18,11 @@
 @media (prefers-reduced-motion:reduce){.releaseBannerTrack{animation:none;white-space:normal;display:block;padding:.65rem 1rem}.releaseBannerTrack span{padding-left:0;display:block}}
 .manifestCard textarea,.manifestNameRow input{background:#fbf8ef!important;color:#161616!important;-webkit-text-fill-color:#161616!important;opacity:1!important}
 </style>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3HPM | Nuvio Wizard Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-        }
-        h1 {
-            color: #ff4757;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        p.subtitle {
-            color: #a4b0be;
-            margin-bottom: 40px;
-        }
-        .wizard-options {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: #1e1e1e;
-            border: 2px solid #2f3542;
-            border-radius: 12px;
-            padding: 30px;
-            width: 280px;
-            transition: transform 0.2s, border-color 0.2s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #ff4757;
-        }
-        .card h2 {
-            margin-top: 0;
-            color: #ffffff;
-            font-size: 1.5rem;
-        }
-        .card p {
-            color: #747d8c;
-            font-size: 0.95rem;
-            line-height: 1.4;
-            flex-grow: 1;
-        }
-        .btn {
-            background: #ff4757;
-            color: #ffffff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: background 0.2s;
-        }
-        .card:hover .btn {
-            background: #ff6b81;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3HPM | Nuvio Wizard Hub</title>
+@@ -82,6 +99,24 @@
+</style>
 </head>
 <body>
 <div class="releaseBanner" role="note" aria-label="Important Nuvio version notice"><div class="releaseBannerTrack"><span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span><span><strong>Important:</strong> Use the GitHub version of Nuvio. It includes the required settings. The Play Store version has limitations and removed features to stay Play Store compliant. Downloader code for the Full Universal Release APK: <strong>9919325</strong>.</span></div></div>
@@ -118,39 +44,10 @@
 <script src="app.js?v=20260701-multi-addon-contrast"></script>
 <script>(function(){var steps=['step1','step2','step3'];var liEls=document.querySelectorAll('.progress li');if(!liEls.length)return;function update(){var activeIndex=0;steps.forEach(function(id,i){var el=document.getElementById(id);if(el&&el.classList.contains('active'))activeIndex=i});liEls.forEach(function(li,i){li.classList.remove('is-active','is-done');if(i<activeIndex)li.classList.add('is-done');else if(i===activeIndex)li.classList.add('is-active')})}update();steps.forEach(function(id){var el=document.getElementById(id);if(el)new MutationObserver(update).observe(el,{attributes:true,attributeFilter:['class']})})})();</script>
 
-    <div class="container">
-        <h1>3HPM Setup Wizards</h1>
-        <p class="subtitle">Select the integration stream configuration platform below.</p>
-        
-        <div class="wizard-options">
-            <!-- Option 1: Your original wizard flow -->
-            <a href="javascript:void(0);" onclick="launchStandardWizard()" class="card">
-                <div>
-                    <h2>Standard Build</h2>
-                    <p>Configure your customized baseline layout rules, preferred scrapers, and personal stream parameters dynamically.</p>
-                </div>
-                <button class="btn">Launch Standard</button>
-            </a>
-
-            <!-- Option 2: The new AIO Instant build -->
-            <a href="Aiotb/index.html" class="card">
-                <div>
-                    <h2>AIO TB Instant</h2>
-                    <p>Deploy the high-quality pre-configured AIOStreams template designed directly for swift TorBox instant cached lookups.</p>
-                </div>
-                <button class="btn">Launch Instant Flow</button>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        function launchStandardWizard() {
-            // Overriding the script wrapper to dynamically replace body contents or initialize app.js
-            // If your original index.html relied on app.js rendering elements right into the page container,
-            // we can redirect or load it gracefully. 
-            window.location.href = "index.html?mode=standard";
-        }
-    </script>
+<div class="container">
+<h1>3HPM Setup Wizards</h1>
+@@ -118,3 +153,4 @@ <h2>AIO TB Instant</h2>
+</script>
 </body>
 </html>
 </html>
