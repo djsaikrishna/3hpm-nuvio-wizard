@@ -22,6 +22,11 @@
             text-align: center;
             max-width: 800px;
             width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         h1 {
             color: #22c55e;
@@ -39,6 +44,7 @@
             gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
+            width: 100%;
         }
         .card {
             background: rgba(15, 23, 42, 0.8);
@@ -88,6 +94,31 @@
             color: #020617;
             border-color: #22c55e;
         }
+        
+        /* New Footer Styling */
+        .pageFooter {
+            margin-top: 60px;
+            padding: 20px 0;
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            font-family: Inter, system-ui, sans-serif;
+        }
+        .pageFooter .disclaimer {
+            color: #64748b;
+            font-size: 0.82rem;
+            margin: 0 0 8px 0;
+            line-height: 1.5;
+        }
+        .pageFooter .signoff {
+            color: #94a3b8;
+            font-size: 0.88rem;
+            margin: 0;
+        }
+        .pageFooter .brand-mark {
+            color: #22c55e;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +130,7 @@
         <div class="wizard-options">
             <a href="standard.html" class="card">
                 <div>
-                    <h2>TB/PM Instant Add-On Mainfests</h2>
+                    <h2>TB/PM Instant Add-On Manifests</h2>
                     <p>Build one or more clean, keyless manifests for Comet, Torrentio, and StremThru Torz.</p>
                 </div>
                 <div class="btn">Manifest Builder</div>
@@ -107,13 +138,18 @@
 
             <a href="Aiotb/index.html" class="card">
                 <div>
-                    <h2>AIOStreams TB/PM Instant</h2>
-                    <p>AIOStreams template setup to be used with TB/PM Instant</p>
+                    <h2>AIOStreams TB/PM Template</h2>
+                    <p>Deploy the high-quality pre-configured AIOStreams template designed directly for swift TorBox instant cached lookups.</p>
                 </div>
-                <div class="btn">AIOStreams Setup</div>
+                <div class="btn">Template Setup</div>
             </a>
         </div>
     </div>
+
+    <footer class="pageFooter">
+        <p class="disclaimer">An independent 3HPM utility. Not affiliated with Nuvio, Comet, Torrentio, StremThru, AIOStreams or TorBox.</p>
+        <p class="signoff">Built with care by <span class="brand-mark">3 Hole Punch Media</span></p>
+    </footer>
 
 </body>
 </html>
