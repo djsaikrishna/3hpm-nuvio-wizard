@@ -1,37 +1,4 @@
-/* ==========================================================================
-   3HPM Nuvio/TB Setup Suite - Global Design System (Extended)
-   ========================================================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Fragment+Mono&display=swap');
-
-:root {
-    --bg: #020617;
-    --panel: rgba(15, 23, 42, 0.88);
-    --panel-2: rgba(30, 41, 59, 0.72);
-    --text: #e5e7eb;
-    --muted: #94a3b8;
-    --green: #22c55e;
-    --green-2: #86efac;
-    --border: rgba(148, 163, 184, 0.2);
-    --shadow: rgba(34, 197, 94, 0.15);
-    --font-sans: 'Familjen Grotesk', Arial, Helvetica, sans-serif;
-    --font-mono: 'Fragment Mono', monospace;
-}
-
-* { 
-    box-sizing: border-box; 
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: var(--font-sans);
-    background:
-        radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.12), transparent 28rem),
-        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.08), transparent 26rem),
-        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+#020617 0%, #0f172a 100%);
     color: var(--text);
     display: flex;
     flex-direction: column;
@@ -400,4 +367,282 @@ footer, .pageFooter {
     .stepHeader { gap: 10px; }
     .stepActions { flex-direction: column; }
     .btn.ghost { width: 100%; }
+}
+/* ==========================================================================
+   3HPM Nuvio Suite - Definitive Unified Global Stylesheet
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Fragment+Mono&display=swap');
+
+:root {
+    --bg: #030712;
+    --panel: #0b0f19;
+    --panel-card: #111827;
+    --panel-input: #070a13;
+    --panel-2: rgba(30, 41, 59, 0.4);
+    --text: #f3f4f6;
+    --muted: #9ca3af;
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.15);
+    --border: rgba(156, 163, 175, 0.15);
+    --font-sans: 'Familjen Grotesk', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Fragment Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    padding: 16px 8px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Master Page Shell Layout */
+.shell, .wrap {
+    width: 100%;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Streaming Notice Banner */
+.releaseBanner {
+    background: #111;
+    color: #fff;
+    border-bottom: 2px solid var(--green);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
+.releaseBanner strong { color: var(--green); }
+
+/* Typography */
+header {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+}
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+}
+h1 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+.lede, .lead {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Main Layout Grids */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    padding: 24px;
+}
+
+/* Layout Static Cards (Used in Aiotb) */
+.panel {
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Wizard Dynamic Visibility States (Used in standard) */
+.stepCard { display: none !important; }
+.stepCard.active { display: block !important; padding: 24px; }
+
+/* Wizard Linear Progress Bar */
+.progress {
+    padding: 0 24px;
+    margin-top: 16px;
+}
+.progress ol {
+    display: flex;
+    list-style: none;
+    background: var(--panel-input);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+.progress li {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 4px;
+    color: var(--muted);
+    border-radius: 6px;
+    opacity: 0.4;
+}
+.progress li.is-active {
+    opacity: 1;
+    background: var(--green-dim);
+    color: var(--green);
+}
+.progress li.is-done {
+    opacity: 0.8;
+    color: var(--green);
+}
+
+.stepHeader { margin-bottom: 20px; }
+.stepNumber { font-family: var(--font-mono); color: var(--green); font-size: 14px; font-weight: bold; text-transform: uppercase; }
+h2 { font-size: 19px; margin-bottom: 10px; color: var(--text); letter-spacing: -0.01em; }
+
+/* Form Control Uniformity */
+.fieldGroup { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+label { font-size: 14px; font-weight: 600; }
+select, input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    background-color: var(--panel-input) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    -webkit-appearance: none;
+}
+select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 14px;
+}
+select:focus, input:focus, textarea:focus { border-color: var(--green); }
+
+/* Fieldsets & Complex Matrix Elements */
+fieldset { border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 24px; }
+legend { font-size: 11px; font-weight: 700; color: var(--green); padding: 0 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+.helperText { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+
+.setupChecklist, .optionsGrid, .resolutionGrid { display: flex; flex-direction: column; gap: 8px; }
+.setupChecklist label, .optionsGrid label, .resolutionGrid label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; }
+
+@media (min-width: 580px) {
+    .resolutionGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .optionsGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+}
+
+.settingsGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.stepActions { display: flex; gap: 12px; margin-top: 16px; }
+
+/* Global Buttons Setup */
+.btn, .download {
+    min-height: 48px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.1s ease;
+    width: 100%;
+}
+.btn.primary, a.download { background-color: var(--green); color: #030712; }
+.btn.ghost { background-color: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn:hover, a.download:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.miniActions { display: flex; gap: 8px; margin-top: 8px; }
+.smallBtn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 4px 8px; border-radius: 6px; font-size: 11px; cursor: pointer; }
+
+/* Subpage Utilities & Blocks */
+.step-label, .tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    width: max-content;
+}
+code {
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--panel-input);
+    color: var(--green);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+    margin-top: 12px;
+}
+.instance-list { display: flex; flex-direction: column; gap: 12px; margin: 12px 0; }
+.instance-card p { font-size: 12px; color: var(--muted); text-align: center; margin-top: 4px; }
+.warning-note {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+/* Outputs & Final Elements */
+.manifestBox { background: var(--panel-input); border-radius: 12px; padding: 16px; border: 1px solid var(--border); margin-bottom: 16px; }
+.manifestHeader { font-size: 12px; font-family: var(--font-mono); color: var(--muted); margin-bottom: 12px; display: flex; justify-content: space-between; }
+.manifestCard { margin-bottom: 12px; }
+.manifestCard label { font-size: 12px; color: var(--green); display: block; margin-bottom: 4px; }
+.manifestCard textarea { font-family: var(--font-mono); font-size: 12px; height: 60px; resize: none; }
+.installGrid { text-align: center; padding: 16px 0; }
+.qrFrame { background: white; padding: 8px; border-radius: 8px; display: inline-block; width: 140px; height: 140px; }
+.qrFrame img { width: 100%; height: auto; }
+.finalSteps ol { padding-left: 16px; font-size: 14px; color: var(--muted); }
+.finalSteps li { margin-bottom: 8px; }
+footer { text-align: center; padding: 32px 16px; font-size: 13px; color: var(--muted); width: 100%; border-top: 1px solid var(--border); margin-top: 16px; }
+
+@media (max-width: 680px) {
+    main { grid-template-columns: 1fr; padding: 16px; }
 }
