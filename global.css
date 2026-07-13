@@ -1,133 +1,213 @@
-/* global.css */
+/* ==========================================================================
+   3HPM Nuvio/TB Setup Suite - Global Design System
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Fragment+Mono&display=swap');
+
 :root {
-    --bg-main: #0e1017;
-    --bg-card: #161923;
-    --bg-card-hover: #1e2235;
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-    --accent: #7c3aed; /* Stremio-ish purple */
-    --accent-hover: #9061f9;
-    --border-color: #262b3d;
-    --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg: #020617;
+    --panel: rgba(15, 23, 42, 0.88);
+    --panel-2: rgba(30, 41, 59, 0.72);
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --green: #22c55e;
+    --green-2: #86efac;
+    --border: rgba(148, 163, 184, 0.26);
+    --shadow: rgba(34, 197, 94, 0.22);
+    --font-sans: 'Familjen Grotesk', Arial, Helvetica, sans-serif;
+    --font-mono: 'Fragment Mono', monospace;
 }
 
-* {
-    box-sizing: border-box;
+* { 
+    box-sizing: border-box; 
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: varpx(--text-primary);
-    font-family: var(--font-stack);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
+    margin: 0;
     min-height: 100vh;
-}
-
-/* Structural Layout */
-.site-wrapper {
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 3rem 1.5rem;
-    flex: 1;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-header h1 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(to right, #fff, var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-header p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-}
-
-/* Grids & Interactive Target Cards */
-.wizard-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.wizard-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.75rem;
-    text-decoration: none;
-    color: inherit;
+    font-family: var(--font-sans);
+    background:
+        radial-gradient(circle at 20% 10%, rgba(34, 197, 94, 0.18), transparent 28rem),
+        radial-gradient(circle at 85% 20%, rgba(59, 130, 246, 0.12), transparent 26rem),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    color: var(--text);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.2s ease-in-out;
+    align-items: center;
+    padding: 32px 16px;
 }
 
-.wizard-card:hover {
+/* Base App Wrapper Layout */
+.wrap, .shell {
+    width: min(940px, 100%);
+    margin: 0 auto;
+}
+
+.card {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(12px);
+    width: 100%;
+}
+
+/* Header & Banner Uniformity */
+header {
+    padding: 42px 34px 24px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.13), rgba(15, 23, 42, 0));
+}
+
+.releaseBanner {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    overflow: hidden;
+    background: #161616;
+    color: #fbf8ef;
+    border-bottom: 3px solid var(--green);
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.releaseBannerTrack {
+    display: inline-flex;
+    gap: 2rem;
+    min-width: max-content;
+    padding: .65rem 0;
+    animation: releaseBannerScroll 34s linear infinite;
+}
+
+.releaseBannerTrack span { display: inline-block; padding-left: 2rem; }
+.releaseBanner strong { color: var(--green); }
+
+@keyframes releaseBannerScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Headings & Typography Elements */
+h1 {
+    margin: 22px 0 12px;
+    font-size: clamp(34px, 6vw, 54px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+}
+
+h1 em {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+
+h2 {
+    margin: 0 0 14px;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+}
+
+.lead, .lede {
+    max-width: 720px;
+    margin: 0;
+    color: var(--muted);
+    font-size: clamp(16px, 2.2vw, 19px);
+    line-height: 1.5;
+}
+
+p { color: var(--muted); line-height: 1.6; margin: 0 0 16px; }
+a { color: var(--green-2); text-decoration: none; transition: color 0.15s ease; }
+a:hover { color: var(--green); text-decoration: underline; }
+
+/* Dashboard Cards & Layout Grids */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+    padding: 24px;
+}
+
+.panel, .stepCard {
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    border-radius: 22px;
+    padding: 24px;
+    margin-bottom: 16px;
+}
+
+/* Reusable Interactive Buttons */
+.download, .btn.primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 58px;
+    margin: 8px 0 18px;
+    border-radius: 18px;
+    background: var(--green);
+    color: #04130a;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 16px 36px var(--shadow);
+    transition: transform 160ms ease, filter 160ms ease;
+}
+
+.download:hover, .btn.primary:hover {
     transform: translateY(-2px);
-    background-color: var(--bg-card-hover);
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px -10px rgba(124, 58, 237, 0.3);
+    filter: brightness(1.08);
 }
 
-.wizard-card h2 {
-    font-size: 1.3rem;
-    margin-bottom: 0.75rem;
-    color: var(--text-primary);
-}
-
-.wizard-card p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-}
-
-.card-action-btn {
-    align-self: flex-start;
-    background-color: var(--accent);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 600;
+/* System Tags & Code Output Screens */
+.tag, .step-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--green-2);
+    border: 1px solid rgba(34, 197, 94, 0.34);
+    background: rgba(34, 197, 94, 0.08);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: background-color 0.15s ease;
 }
 
-.wizard-card:hover .card-action-btn {
-    background-color: var(--accent-hover);
+code {
+    display: block;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(2, 6, 23, 0.7);
+    color: var(--green-2);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
 }
 
-/* Footer Assembly */
-footer {
-    border-top: 1px solid var(--border-color);
-    padding: 2rem 1.5rem;
+/* Global Shared Footer layout */
+footer, .pageFooter {
+    padding: 24px 34px 32px;
+    color: var(--muted);
+    font-size: 14px;
     text-align: center;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    background-color: rgba(14, 16, 23, 0.5);
+    width: 100%;
+    background: transparent;
 }
 
-footer p + p {
-    margin-top: 0.5rem;
-}
-
-footer span {
-    color: var(--text-primary);
-    font-weight: 600;
+@media (max-width: 760px) {
+    main { grid-template-columns: 1fr; padding: 16px; }
+    header { padding: 32px 24px 22px; }
 }
