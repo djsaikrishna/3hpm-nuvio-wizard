@@ -1,109 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <title>AIOStreams TB Instant Template | 3HPM</title>
-    <meta content="Download the 3HPM AIOStreams template for use with Nuvio Instant and TB Instant." name="description"/>
-    <link rel="stylesheet" href="../global.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AIOStreams TB Instant Quick Start | 3HPM</title>
+    <meta name="description" content="Download the 3HPM AIOStreams template for use with Nuvio Instant and TB Instant.">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../suite.css">
 </head>
 <body>
-
-<div class="wrap">
-    <section aria-labelledby="page-title" class="card">
-        <header>
-            <span class="tag">3HPM Template Drop</span>
-            <h1 id="page-title">AIOStreams TB Instant Quick Start</h1>
-            <p class="lead">Download the template, choose a public AIOStreams instance, and follow the install guide if you need screenshots. Built for Nuvio Instant/TB Instant style setups.</p>
-            
-            <div style="margin-top:22px; padding:16px; border-radius:12px; background:var(--green-dim); border:1px solid rgba(34,197,94,0.3); font-size:14px; line-height:1.5;">
-                <strong>First time using AIOStreams?</strong><br/>
-                Read the <a href="https://3hpm.ca/aiotb/install" style="color:var(--green); font-weight:bold;">2-minute Installation Guide</a> before downloading the template. It includes screenshots for every step.
+    <div class="suite-shell">
+        <nav class="suite-nav" aria-label="Toolkit navigation">
+            <a class="suite-brand" href="../index.html" aria-label="3HPM Nuvio Toolkit home">
+                <span class="suite-mark">3HPM</span>
+                <span class="suite-brand-copy">
+                    <strong>Nuvio Toolkit</strong>
+                    <span>Setup utilities</span>
+                </span>
+            </a>
+            <div class="suite-links">
+                <a href="../index.html">Overview</a>
+                <a href="../standard.html">Manifest Builder</a>
+                <a class="is-active" href="index.html" aria-current="page">AIOStreams</a>
             </div>
-        </header>
+        </nav>
 
-        <main>
-            <section class="panel setup-step">
-                <div>
-                    <div class="step-label">Step 1</div>
-                    <h2>Download Template</h2>
-                    <p>Download the preconfigured AIOStreams template to your device. You'll import this JSON file into AIOStreams in the next step.</p>
+        <section class="card" aria-labelledby="page-title">
+            <header class="tool-hero">
+                <span class="tag">Module 02 · AIOStreams</span>
+                <h1 id="page-title">AIOStreams <em>TB Instant</em> quick start.</h1>
+                <p class="lead">Download the tested template, choose a public AIOStreams instance, and import the configuration. This route is for users who want aggregation and formatting control beyond direct scraper manifests.</p>
+                <div class="guide-callout">
+                    <strong>First time using AIOStreams?</strong><br>
+                    Read the <a href="https://3hpm.ca/aiotb/install" rel="noopener noreferrer" target="_blank">2-minute installation guide</a> before importing the template. It includes screenshots for every step.
                 </div>
-                <div>
-                    <a class="download" download="" href="aio-with-nuvio-instant-template.json">Download Template JSON</a>
-                    <code>https://nuvioinstant.3hpm.ca/Aiotb/aio-with-nuvio-instant-template.json</code>
-                </div>
-            </section>
+            </header>
 
-            <section class="panel setup-step">
-                <div>
-                    <div class="step-label">Step 2</div>
-                    <h2>Choose an Instance</h2>
-                    <p>Open one of these public configure nodes to drop your template setup file:</p>
+            <main class="quick-start-main">
+                <section class="quick-step">
+                    <span class="step-label">Step 01</span>
+                    <h2>Download the template</h2>
+                    <p>Save the preconfigured JSON file to your device. You will import it into AIOStreams in the next step.</p>
+                    <a class="download" download href="aio-with-nuvio-instant-template.json">Download Template JSON</a>
+                    <code class="template-url">https://nuvioinstant.3hpm.ca/Aiotb/aio-with-nuvio-instant-template.json</code>
+                </section>
+
+                <section class="quick-step">
+                    <span class="step-label">Step 02</span>
+                    <h2>Choose an instance</h2>
+                    <p>Open a public configure page and import the template file you downloaded.</p>
                     <div class="instance-list">
-                        <div class="instance-card">
-    <span class="download" style="opacity:0.6; cursor:not-allowed;">
-        12312023 (Temporarily Unavailable)
-    </span>
-    <p><strong>This instance is currently having issues.</strong><br>
-    Please select a different public instance.</p>
-    <p>Public Instance</p>
-</div>
-
+                        <div class="instance-card is-unavailable">
+                            <span class="download" aria-disabled="true">12312023 · Unavailable</span>
+                            <p>Use a different public instance for now.</p>
+                        </div>
                         <div class="instance-card">
                             <a class="download" href="https://aio.atbphosting.com/stremio/configure" rel="noopener noreferrer" target="_blank">ATBP Hosting</a>
-                            <p>Public Instance</p>
+                            <p>Public instance</p>
                         </div>
                         <div class="instance-card">
                             <a class="download" href="https://aiostreams.fortheweak.cloud/stremio/configure" rel="noopener noreferrer" target="_blank">ForTheWeak</a>
-                            <p>Public Instance</p>
+                            <p>Public instance</p>
                         </div>
                         <div class="instance-card">
                             <a class="download" href="https://aiostreamsfortheweebsstable.midnightignite.me/stremio/configure" rel="noopener noreferrer" target="_blank">ForTheWeebs Stable</a>
-                            <p>Public Instance</p>
+                            <p>Public instance</p>
                         </div>
                     </div>
-                </div>
-                <div class="warning-note">
-                    <strong>Important:</strong> Do not use an ElfHosted AIOStreams instance for this template. It will fail under Nuvio layouts.
-                </div>
-            </section>
+                    <div class="warning-note">
+                        <strong>Important:</strong> Do not use an ElfHosted AIOStreams instance for this template. It will fail under Nuvio layouts.
+                    </div>
+                </section>
 
-            <section class="panel setup-step">
-                <div>
-                    <div class="step-label">Step 3</div>
-                    <h2>Need Assistance?</h2>
-                    <p>The screenshot documentation guide walks you through importing config JSON structures safely without clearing active credentials.</p>
-                </div>
-                <div>
-                    <a class="download" href="https://nuvioinstant.3hpm.ca/Aiotb/install" rel="noopener noreferrer" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text);" target="_blank">View Install Guide</a>
-                </div>
-            </section>
-        </main>
+                <section class="quick-step">
+                    <span class="step-label">Step 03</span>
+                    <h2>Import and finish</h2>
+                    <p>Upload the JSON template, confirm the imported settings, add any required metadata credentials, then install the generated AIOStreams addon in Nuvio.</p>
+                    <a class="download" href="https://3hpm.ca/aiotb/install" rel="noopener noreferrer" target="_blank" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); box-shadow:none;">Open Installation Guide</a>
+                    <aside class="notice" role="note">
+                        <span class="stamp">Tip</span>
+                        <p>Start with the template unchanged. Once it works, tune filters and formatting one section at a time.</p>
+                    </aside>
+                </section>
+            </main>
 
-        <footer>
-            Made by 3HPM. Useful nerd stuff, minus the fifteen-page ritual sacrifice to the settings menu.
-        </footer>
-    </section>
-</div>
+            <footer>
+                <p>An independent 3HPM utility. Not affiliated with Nuvio, AIOStreams, or TorBox.</p>
+                <p style="margin-top: 4px;">Built by <span>3 Hole Punch Media</span></p>
+            </footer>
+        </section>
+    </div>
 
-</body>
-</html>
-en, enter TMDB credentials, and finish the AIOStreams configuration.</p></section></main>
-<footer>
-        Made by 3HPM. Useful nerd stuff, minus the fifteen-page ritual sacrifice to the settings menu.
-      </footer>
-</section>
-</div>
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('threehpm', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Tip Me',
-    'floating-chat.donateButton.background-color': '#ffffff',
-    'floating-chat.donateButton.text-color': '#323842'
-  });
-</script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script>
+        kofiWidgetOverlay.draw('threehpm', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Tip Me',
+            'floating-chat.donateButton.background-color': '#ffffff',
+            'floating-chat.donateButton.text-color': '#323842'
+        });
+    </script>
 </body>
 </html>

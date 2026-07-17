@@ -3,51 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TB/PM Instant Setup Wizards</title>
+    <meta name="description" content="3HPM setup tools for Nuvio Connected Services and AIOStreams.">
+    <title>3HPM Nuvio Setup Toolkit</title>
     <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="suite.css">
 </head>
 <body>
+    <div class="suite-shell">
+        <nav class="suite-nav" aria-label="Toolkit navigation">
+            <a class="suite-brand" href="index.html" aria-label="3HPM Nuvio Toolkit home">
+                <span class="suite-mark">3HPM</span>
+                <span class="suite-brand-copy">
+                    <strong>Nuvio Toolkit</strong>
+                    <span>Setup utilities</span>
+                </span>
+            </a>
+            <div class="suite-links">
+                <a class="is-active" href="index.html" aria-current="page">Overview</a>
+                <a href="standard.html">Manifest Builder</a>
+                <a href="Aiotb/index.html">AIOStreams</a>
+            </div>
+        </nav>
 
-    <div class="site-wrapper" style="margin-top: 24px; padding: 0 8px;">
-        <div class="card">
-            <header style="border-bottom: 1px solid var(--border);">
-                <span class="tag">3HPM UTILITY SUITE</span>
-                <h1>TB/PM Instant <em>Setup Wizards</em></h1>
-                <p class="lede">Select your preferred deployment architecture configuration below to build specialized catalogs or configure localized streaming feeds.</p>
+        <section class="card">
+            <header class="landing-hero">
+                <span class="tag">3HPM Utility Suite</span>
+                <h1>One toolkit. <em>Two clean setup paths.</em></h1>
+                <p class="lede">Build Nuvio Connected Services manifests or configure AIOStreams from a tested template. The tools now share one interface, one visual language, and one place to start.</p>
+                <div class="suite-proof" aria-label="Toolkit features">
+                    <span>No API keys collected</span>
+                    <span>Static GitHub Pages</span>
+                    <span>Mobile friendly</span>
+                </div>
             </header>
-            
-            <main class="wizard-grid">
-                <a href="standard.html" class="wizard-card-link">
-                    <div>
-                        <h2>TB/PM Instant Add-On Manifests</h2>
-                        <p>Build clean, keyless streaming manifests for Comet, Torrentio, and StremThru Torz optimized for Nuvio layout managers.</p>
-                    </div>
-                    <div class="card-action-btn">Launch Manifest Builder →</div>
-                </a>
 
-                <a href="Aiotb/index.html" class="wizard-card-link">
-                    <div>
-                        <h2>AIOStreams Quick Start Template</h2>
-                        <p>Download preconfigured templates, choose an active public coordinator instance, and access the screenshot implementation guide.</p>
+            <main class="landing-main">
+                <div class="section-heading">
+                    <h2>Choose your setup route</h2>
+                    <p>Both routes are built for Nuvio. Pick the one that matches how much control you want over scraping and aggregation.</p>
+                </div>
+
+                <div class="module-grid">
+                    <a href="standard.html" class="module-card">
+                        <div class="module-card-content">
+                            <div class="module-card-top">
+                                <span class="module-number">MODULE 01</span>
+                                <span class="status-chip">Interactive wizard</span>
+                            </div>
+                            <h3>Connected Services Manifest Builder</h3>
+                            <p>Generate clean, keyless manifests for Nuvio using tested Comet, Torrentio, and StremThru Torz configurations.</p>
+                            <div class="module-tags" aria-label="Supported addons">
+                                <span>Comet</span>
+                                <span>Torrentio</span>
+                                <span>StremThru Torz</span>
+                            </div>
+                        </div>
+                        <div class="module-card-action">
+                            <span>Build manifests</span>
+                            <span class="module-arrow" aria-hidden="true">→</span>
+                        </div>
+                    </a>
+
+                    <a href="Aiotb/index.html" class="module-card">
+                        <div class="module-card-content">
+                            <div class="module-card-top">
+                                <span class="module-number">MODULE 02</span>
+                                <span class="status-chip">Template workflow</span>
+                            </div>
+                            <h3>AIOStreams Quick Start</h3>
+                            <p>Download the 3HPM template, open a public AIOStreams instance, and follow the installation guide without rebuilding everything by hand.</p>
+                            <div class="module-tags" aria-label="AIOStreams workflow features">
+                                <span>JSON template</span>
+                                <span>Public instances</span>
+                                <span>Install guide</span>
+                            </div>
+                        </div>
+                        <div class="module-card-action">
+                            <span>Open quick start</span>
+                            <span class="module-arrow" aria-hidden="true">→</span>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="workflow-strip" aria-label="Toolkit workflow">
+                    <div class="workflow-item">
+                        <span>01</span>
+                        <strong>Choose a route</strong>
+                        <p>Use direct manifests for simplicity or AIOStreams for deeper aggregation control.</p>
                     </div>
-                    <div class="card-action-btn">Launch Template Setup →</div>
-                </a>
+                    <div class="workflow-item">
+                        <span>02</span>
+                        <strong>Configure it</strong>
+                        <p>Follow tested defaults first, then adjust quality, limits, or presentation later.</p>
+                    </div>
+                    <div class="workflow-item">
+                        <span>03</span>
+                        <strong>Install in Nuvio</strong>
+                        <p>Add the resulting manifest or imported AIOStreams configuration and enable it.</p>
+                    </div>
+                </div>
             </main>
 
             <footer>
-                <p>An independent 3HPM utility. Not affiliated with Nuvio, Comet, Torrentio, StremThru, AIOStreams or TorBox.</p>
-                <p style="margin-top: 4px;">Built with care by <span style="color: var(--green); font-weight: 600;">3 Hole Punch Media</span></p>
+                <p>An independent 3HPM utility. Not affiliated with Nuvio, AIOStreams, Comet, Torrentio, StremThru, or TorBox.</p>
+                <p style="margin-top: 4px;">Built by <span>3 Hole Punch Media</span></p>
             </footer>
-        </div>
+        </section>
     </div>
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('threehpm', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Tip Me',
-    'floating-chat.donateButton.background-color': '#ffffff',
-    'floating-chat.donateButton.text-color': '#323842'
-  });
-</script>
+
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script>
+        kofiWidgetOverlay.draw('threehpm', {
+            'type': 'floating-chat',
+            'floating-chat.donateButton.text': 'Tip Me',
+            'floating-chat.donateButton.background-color': '#ffffff',
+            'floating-chat.donateButton.text-color': '#323842'
+        });
+    </script>
 </body>
 </html>
