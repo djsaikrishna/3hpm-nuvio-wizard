@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050807">
+  <title>Netflix Catalogue Compare</title>
+  <meta name="description" content="Compare Netflix availability between the United States and Canada using TMDB watch-provider data.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">N</span>
+      <div>
+        <p class="eyebrow">CATALOGUE CHECKER</p>
+        <h1>Netflix Catalogue Compare</h1>
+      </div>
+    </div>
+    <button id="settingsButton" class="ghost-button" type="button">API Settings</button>
+  </header>
+
+  <main>
+    <section class="hero panel">
+      <div>
+        <p class="eyebrow">UNITED STATES VS CANADA</p>
+        <h2>Find titles available on US Netflix but missing from Canadian Netflix.</h2>
+        <p class="lede">This tool compares TMDB watch-provider listings for both countries. It does not bypass Netflix restrictions or change your region.</p>
+      </div>
+      <div class="comparison" aria-label="Catalogue comparison">
+        <div class="country-card">
+          <span class="flag">US</span>
+          <strong>Available in</strong>
+          <span>United States</span>
+        </div>
+        <span class="minus">−</span>
+        <div class="country-card">
+          <span class="flag">CA</span>
+          <strong>Missing from</strong>
+          <span>Canada</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls panel" aria-label="Search controls">
+      <div class="segmented" role="group" aria-label="Content type">
+        <button class="segment active" data-type="movie" type="button">Movies</button>
+        <button class="segment" data-type="tv" type="button">TV Shows</button>
+      </div>
+
+      <label>
+        Sort
+        <select id="sortBy">
+          <option value="popularity.desc">Popularity</option>
+          <option value="vote_average.desc">Rating</option>
+          <option value="primary_release_date.desc">Newest first</option>
+          <option value="original_title.asc">Title A–Z</option>
+        </select>
+      </label>
+
+      <label>
+        Minimum rating
+        <select id="minRating">
+          <option value="0">Any</option>
+          <option value="6">6+</option>
+          <option value="7">7+</option>
+          <option value="8">8+</option>
+        </select>
+      </label>
+
+      <label>
+        Released after
+        <select id="yearFrom">
+          <option value="">Any year</option>
+        </select>
+      </label>
+
+      <button id="compareButton" class="primary-button" type="button">Compare Catalogues</button>
+    </section>
+
+    <section class="status-row">
+      <div>
+        <h3 id="resultsHeading">Ready to compare</h3>
+        <p id="statusText">Add your free TMDB read-access token in API Settings, then run the comparison.</p>
+      </div>
+      <button id="loadMoreButton" class="ghost-button hidden" type="button">Load More</button>
+    </section>
+
+    <section id="results" class="results-grid" aria-live="polite"></section>
+
+    <section class="notice panel">
+      <h3>Data note</h3>
+      <p>Availability data is supplied by TMDB through its JustWatch partnership and can lag behind recent Netflix licensing changes. JustWatch attribution is required when displaying this data.</p>
+      <p class="attribution">Streaming availability data provided by <a href="https://www.justwatch.com/" target="_blank" rel="noopener noreferrer">JustWatch</a>. Movie and TV metadata provided by <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer">TMDB</a>.</p>
+    </section>
+  </main>
+
+  <dialog id="settingsDialog">
+    <form method="dialog" class="settings-form">
+      <div class="dialog-heading">
+        <div>
+          <p class="eyebrow">SETUP</p>
+          <h2>TMDB API Settings</h2>
+        </div>
+        <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
+      </div>
+
+      <p>Create a free TMDB account, request API access, then paste your API Read Access Token below. It stays in this browser and is sent only to TMDB.</p>
+
+      <label>
+        API Read Access Token
+        <textarea id="apiToken" rows="5" placeholder="Paste the long TMDB bearer token here"></textarea>
+      </label>
+
+      <div class="dialog-actions">
+        <button id="clearTokenButton" class="ghost-button" type="button">Clear Token</button>
+        <button id="saveTokenButton" class="primary-button" value="default">Save Token</button>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="cardTemplate">
+    <article class="title-card">
+      <div class="poster-wrap">
+        <img class="poster" alt="">
+        <span class="rating"></span>
+      </div>
+      <div class="card-body">
+        <p class="availability">US NETFLIX · NOT LISTED IN CANADA</p>
+        <h3 class="title"></h3>
+        <p class="meta"></p>
+        <p class="overview"></p>
+        <a class="details-link" target="_blank" rel="noopener noreferrer">View on TMDB</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
