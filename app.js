@@ -222,9 +222,12 @@ function buildLanguageConfig() {
 }
 
 function buildCometConfig() {
+  const maxSizeGb = Number(document.getElementById('maxSize').value) || 0;
+  const maxSizeBytes = maxSizeGb > 0 ? maxSizeGb * 1024 * 1024 * 1024 : 0;
+
   return {
     maxResultsPerResolution: Number(document.getElementById('maxResults').value) || 0,
-    maxSize: Number(document.getElementById('maxSize').value) || 0,
+    maxSize: maxSizeBytes,
     cachedOnly: document.getElementById('cachedOnly').checked,
     sortCachedUncachedTogether: false,
     removeTrash: document.getElementById('removeTrash').checked,
