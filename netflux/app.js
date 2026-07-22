@@ -1,4 +1,4 @@
-const WORKER_BASE = "https://netflux-api.the-geek.workers.dev/";
+const WORKER_BASE = "https://netflux-api.the-geek.workers.dev";
 const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 const MAX_PAGES_PER_BATCH = 3;
 
